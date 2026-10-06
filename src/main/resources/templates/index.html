@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UniRepo | Academic Research Repository</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            margin-left: 15px;
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0d6efd, #084298);
+            color: white;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+
+        .hero .btn {
+            padding: 12px 25px;
+            margin: 5px;
+        }
+
+        /* Statistics */
+        .stats {
+            margin-top: -40px;
+            position: relative;
+        }
+
+        .stat-card {
+            border: none;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        /* Features */
+        .feature-card {
+            border: none;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #212529;
+            color: white;
+            margin-top: 70px;
+            padding: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-mortarboard-fill"></i>
+            UniRepo
+        </a>
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">
+                        <i class="bi bi-search"></i>
+                        Search Papers
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload">
+                        <i class="bi bi-cloud-upload"></i>
+                        Upload Paper
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/reports">
+                        <i class="bi bi-bar-chart"></i>
+                        Reports
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero text-center">
+
+    <div class="container">
+
+        <i class="bi bi-journal-bookmark-fill"
+           style="font-size: 4rem;">
+        </i>
+
+        <h1 class="mt-3">
+            Academic Research Repository
+        </h1>
+
+        <p>
+            Discover, store and manage academic research papers
+            in one secure and centralized platform.
+        </p>
+
+        <div class="mt-4">
+
+            <a href="/search" class="btn btn-light btn-lg">
+                <i class="bi bi-search"></i>
+                Search Research
+            </a>
+
+            <a href="/upload" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-cloud-upload"></i>
+                Upload Paper
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="card stat-card shadow text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-people-fill feature-icon"></i>
+
+                        <div class="stat-number">
+                            120
+                        </div>
+
+                        <p class="text-muted mb-0">
+                            Researchers
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card stat-card shadow text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-file-earmark-text-fill feature-icon"></i>
+
+                        <div class="stat-number">
+                            2,500
+                        </div>
+
+                        <p class="text-muted mb-0">
+                            Research Papers
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="card stat-card shadow text-center">
+
+                    <div class="card-body">
+
+                        <i class="bi bi-folder-fill feature-icon"></i>
+
+                        <div class="stat-number">
+                            35
+                        </div>
+
+                        <p class="text-muted mb-0">
+                            Research Categories
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="container mt-5 pt-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+            Everything You Need for Academic Research
+        </h2>
+
+        <p class="text-muted">
+            UniRepo makes managing and discovering research simple.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <!-- Search -->
+        <div class="col-md-4">
+
+            <div class="card feature-card shadow-sm text-center">
+
+                <div class="card-body">
+
+                    <i class="bi bi-search feature-icon"></i>
+
+                    <h4>
+                        Search Research
+                    </h4>
+
+                    <p class="text-muted">
+                        Quickly find academic papers using
+                        keywords, authors and research categories.
+                    </p>
+
+                    <a href="/search" class="btn btn-primary">
+                        Search Papers
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Upload -->
+        <div class="col-md-4">
+
+            <div class="card feature-card shadow-sm text-center">
+
+                <div class="card-body">
+
+                    <i class="bi bi-cloud-arrow-up-fill feature-icon"></i>
+
+                    <h4>
+                        Upload Papers
+                    </h4>
+
+                    <p class="text-muted">
+                        Upload and securely store academic
+                        research papers in the repository.
+                    </p>
+
+                    <a href="/upload" class="btn btn-primary">
+                        Upload Paper
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Reports -->
+        <div class="col-md-4">
+
+            <div class="card feature-card shadow-sm text-center">
+
+                <div class="card-body">
+
+                    <i class="bi bi-graph-up-arrow feature-icon"></i>
+
+                    <h4>
+                        Research Reports
+                    </h4>
+
+                    <p class="text-muted">
+                        View useful statistics and reports
+                        about research stored in UniRepo.
+                    </p>
+
+                    <a href="/reports" class="btn btn-primary">
+                        View Reports
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="container mt-5">
+
+    <div class="bg-primary text-white rounded-4 p-5 text-center">
+
+        <h2 class="fw-bold">
+            Start Exploring Academic Research
+        </h2>
+
+        <p class="mb-4">
+            Find valuable research and contribute to the academic community.
+        </p>
+
+        <a href="/search" class="btn btn-light btn-lg">
+            Explore Research
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <h5>
+            <i class="bi bi-mortarboard-fill"></i>
+            UniRepo
+        </h5>
+
+        <p class="mb-2">
+            Academic Research Repository
+        </p>
+
+        <hr>
+
+        <p class="mb-0 text-white-50">
+            © 2026 UniRepo. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JavaScript -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Search Papers - UniRepo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        body {
+            background-color: #f5f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #0d47a1, #1976d2);
+            padding: 15px 40px;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            opacity: 0.8;
+        }
+
+
+        /* Page header */
+        .page-header {
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            color: white;
+            padding: 45px 0;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .page-header p {
+            font-size: 17px;
+            margin-bottom: 0;
+        }
+
+
+        /* Search box */
+        .search-container {
+            margin-top: -30px;
+        }
+
+        .search-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+
+        /* Search button */
+        .search-button {
+            height: 48px;
+            font-weight: 600;
+        }
+
+
+        /* Results */
+        .results-title {
+            font-weight: bold;
+            color: #212529;
+        }
+
+        .paper-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+            transition: 0.2s;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .paper-title {
+            color: #0d47a1;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .paper-author {
+            color: #555;
+        }
+
+        .paper-abstract {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .category-badge {
+            background-color: #1976d2;
+            font-size: 13px;
+        }
+
+
+        /* No results */
+        .no-results {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .no-results i {
+            font-size: 45px;
+            color: #999;
+        }
+
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            background-color: #0d47a1;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-journal-bookmark-fill"></i>
+            UniRepo
+        </a>
+
+
+        <div class="navbar-nav ms-auto">
+
+            <a class="nav-link" href="/">
+                <i class="bi bi-house"></i>
+                Home
+            </a>
+
+            <a class="nav-link active" href="/search">
+                <i class="bi bi-search"></i>
+                Search Papers
+            </a>
+
+            <a class="nav-link" href="/upload">
+                <i class="bi bi-cloud-upload"></i>
+                Upload Paper
+            </a>
+
+            <a class="nav-link" href="/reports">
+                <i class="bi bi-bar-chart"></i>
+                Reports
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= PAGE HEADER ================= -->
+
+<section class="page-header">
+
+    <div class="container">
+
+        <h1>
+            <i class="bi bi-search"></i>
+            Search Research Papers
+        </h1>
+
+        <p>
+            Find academic research papers by title, author, keyword or category.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SEARCH FORM ================= -->
+
+<div class="container search-container">
+
+    <div class="search-card">
+
+        <form action="/search" method="get">
+
+            <div class="row g-3 align-items-end">
+
+
+                <!-- Keyword -->
+
+                <div class="col-md-7">
+
+                    <label for="keyword" class="form-label">
+                        Keyword
+                    </label>
+
+                    <input
+                            type="text"
+                            id="keyword"
+                            name="keyword"
+                            class="form-control"
+                            placeholder="Search title, author or abstract..."
+                            th:value="${keyword}">
+
+                </div>
+
+
+                <!-- Category -->
+
+                <div class="col-md-3">
+
+                    <label for="category" class="form-label">
+                        Category
+                    </label>
+
+                    <select
+                            id="category"
+                            name="category"
+                            class="form-select">
+
+                        <option value=""
+                                th:selected="${category == null or category == ''}">
+                            All Categories
+                        </option>
+
+                        <option value="Computer Science"
+                                th:selected="${category == 'Computer Science'}">
+                            Computer Science
+                        </option>
+
+                        <option value="Information Technology"
+                                th:selected="${category == 'Information Technology'}">
+                            Information Technology
+                        </option>
+
+                        <option value="Mathematics"
+                                th:selected="${category == 'Mathematics'}">
+                            Mathematics
+                        </option>
+
+                        <option value="Engineering"
+                                th:selected="${category == 'Engineering'}">
+                            Engineering
+                        </option>
+
+                        <option value="Business"
+                                th:selected="${category == 'Business'}">
+                            Business
+                        </option>
+
+                        <option value="Education"
+                                th:selected="${category == 'Education'}">
+                            Education
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Search button -->
+
+                <div class="col-md-2">
+
+                    <button
+                            type="submit"
+                            class="btn btn-primary search-button w-100">
+
+                        <i class="bi bi-search"></i>
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= SEARCH INFORMATION ================= -->
+
+<div class="container mt-5">
+
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="results-title">
+            Research Papers
+        </h2>
+
+        <span
+                th:if="${papers != null}"
+                class="text-muted">
+
+            <span th:text="${#lists.size(papers)}">0</span>
+            paper(s) found
+
+        </span>
+
+    </div>
+
+
+
+    <!-- Search filters currently being used -->
+
+    <div
+            th:if="${(keyword != null and !#strings.isEmpty(keyword))
+                    or (category != null and !#strings.isEmpty(category))}"
+            class="alert alert-info">
+
+        <i class="bi bi-funnel"></i>
+
+        <strong>Current search:</strong>
+
+        <span
+                th:if="${keyword != null and !#strings.isEmpty(keyword)}">
+
+            Keyword:
+            <strong th:text="${keyword}"></strong>
+
+        </span>
+
+        <span
+                th:if="${category != null and !#strings.isEmpty(category)}">
+
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+
+            Category:
+            <strong th:text="${category}"></strong>
+
+        </span>
+
+    </div>
+
+
+
+    <!-- ================= NO RESULTS ================= -->
+
+    <div
+            th:if="${papers == null or #lists.isEmpty(papers)}"
+            class="no-results">
+
+        <i class="bi bi-file-earmark-x"></i>
+
+        <h3 class="mt-3">
+            No Research Papers Found
+        </h3>
+
+        <p class="text-muted">
+            Try using a different keyword or category.
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= RESEARCH PAPER RESULTS ================= -->
+
+    <div
+            th:if="${papers != null and !#lists.isEmpty(papers)}"
+            th:each="paper : ${papers}"
+            class="paper-card">
+
+        <div class="card-body p-4">
+
+
+            <!-- Title -->
+
+            <div class="d-flex justify-content-between align-items-start">
+
+                <div>
+
+                    <h3
+                            class="paper-title"
+                            th:text="${paper.title}">
+
+                        Research Paper Title
+
+                    </h3>
+
+                </div>
+
+
+                <!-- Category -->
+
+                <span
+                        class="badge category-badge"
+                        th:text="${paper.category}">
+
+                    Category
+
+                </span>
+
+            </div>
+
+
+
+            <!-- Author and year -->
+
+            <p class="paper-author mt-2">
+
+                <i class="bi bi-person"></i>
+
+                <strong>Author:</strong>
+
+                <span th:text="${paper.author}">
+                    Author Name
+                </span>
+
+
+                &nbsp;&nbsp; | &nbsp;&nbsp;
+
+
+                <i class="bi bi-calendar"></i>
+
+                <strong>Year:</strong>
+
+                <span th:text="${paper.year}">
+                    2026
+                </span>
+
+            </p>
+
+
+
+            <!-- Abstract -->
+
+            <p class="paper-abstract mt-3">
+
+                <strong>Abstract:</strong>
+
+                <span th:text="${paper.abstractText}">
+                    Research paper abstract will appear here.
+                </span>
+
+            </p>
+
+
+
+            <!-- File -->
+
+            <div class="mt-3">
+
+                <i class="bi bi-file-earmark-pdf text-danger"></i>
+
+                <strong>File:</strong>
+
+                <span th:text="${paper.fileName}">
+                    research-paper.pdf
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p class="mb-0">
+        © 2026 UniRepo - Academic Research Repository
+    </p>
+
+</footer>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>
