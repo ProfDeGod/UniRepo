@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>UniRepo | Academic Research Repository</title>
 
-    <!-- Bootstrap CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet">
@@ -17,190 +21,331 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
+
         body {
-            background-color: #f8f9fa;
+            margin: 0;
+            background-color: #f5f7fb;
             font-family: Arial, sans-serif;
         }
 
-        /* Navbar */
+        /* =========================
+           NAVBAR
+           ========================= */
+
         .navbar {
-            padding: 15px 0;
+            background: linear-gradient(90deg, #08c8e8, #087cff);
+            padding: 18px 60px;
         }
 
         .navbar-brand {
-            font-size: 1.6rem;
+            color: white !important;
+            font-size: 25px;
             font-weight: bold;
         }
 
-        .nav-link {
-            margin-left: 15px;
+        .navbar-nav {
+            align-items: center;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            margin-left: 25px;
             font-weight: 500;
         }
 
-        /* Hero */
+        .navbar-nav .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .logout-button {
+            margin-left: 25px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           HERO SECTION
+           ========================= */
+
         .hero {
-            background: linear-gradient(135deg, #0d6efd, #084298);
+            background: linear-gradient(135deg, #08c8e8, #087cff);
             color: white;
-            padding: 90px 20px;
+            text-align: center;
+            padding: 80px 20px 100px;
+        }
+
+        .hero-icon {
+            font-size: 55px;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 20px auto;
+            font-size: 18px;
+            max-width: 750px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
         }
 
-        .hero .btn {
+        .hero-buttons {
+            margin-top: 25px;
+        }
+
+        .hero-button {
             padding: 12px 25px;
             margin: 5px;
+            font-weight: 600;
+            border-radius: 6px;
         }
 
-        /* Statistics */
-        .stats {
-            margin-top: -40px;
-            position: relative;
+
+        /* =========================
+           STATISTICS
+           ========================= */
+
+        .statistics {
+            margin-top: -45px;
         }
 
         .stat-card {
-            border: none;
+            background-color: white;
             border-radius: 12px;
-            padding: 25px;
-            transition: 0.3s;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+            height: 100%;
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
+        .stat-icon {
+            font-size: 35px;
+            color: #1685e5;
+            margin-bottom: 10px;
         }
 
         .stat-number {
-            font-size: 2.2rem;
+            font-size: 28px;
             font-weight: bold;
-            color: #0d6efd;
+            color: #1685e5;
         }
 
-        /* Features */
+        .stat-label {
+            color: #777;
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           FEATURES
+           ========================= */
+
+        .features {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 45px;
+            color: #212529;
+        }
+
         .feature-card {
-            border: none;
+            background-color: white;
             border-radius: 12px;
             padding: 30px;
             height: 100%;
-            transition: 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            color: #0d6efd;
+            font-size: 40px;
+            color: #087cff;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-weight: bold;
             margin-bottom: 15px;
         }
 
-        /* Footer */
-        footer {
-            background-color: #212529;
-            color: white;
-            margin-top: 70px;
-            padding: 30px 0;
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
         }
+
+
+        /* =========================
+           FOOTER
+           ========================= */
+
+        footer {
+            background-color: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= NAVIGATION ================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
+<!-- =========================
+     NAVIGATION BAR
+     ========================= -->
+
+<nav class="navbar">
+
+    <div class="container-fluid">
+
+        <!-- LOGO -->
 
         <a class="navbar-brand" href="/">
+
             <i class="bi bi-mortarboard-fill"></i>
+
             UniRepo
+
         </a>
 
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
 
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- NAVIGATION LINKS -->
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
 
-            <ul class="navbar-nav ms-auto">
+            <a class="nav-link active" href="/">
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">
-                        Home
-                    </a>
-                </li>
+                <i class="bi bi-house"></i>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/search">
-                        <i class="bi bi-search"></i>
-                        Search Papers
-                    </a>
-                </li>
+                Home
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/upload">
-                        <i class="bi bi-cloud-upload"></i>
-                        Upload Paper
-                    </a>
-                </li>
+            </a>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/reports">
-                        <i class="bi bi-bar-chart"></i>
-                        Reports
-                    </a>
-                </li>
 
-            </ul>
+            <a class="nav-link" href="/search">
+
+                <i class="bi bi-search"></i>
+
+                Search Papers
+
+            </a>
+
+
+            <a class="nav-link" href="/upload">
+
+                <i class="bi bi-cloud-upload"></i>
+
+                Upload Paper
+
+            </a>
+
+
+            <a class="nav-link" href="/reports">
+
+                <i class="bi bi-bar-chart"></i>
+
+                Reports
+
+            </a>
+
+
+            <!-- =========================
+                 LOGOUT BUTTON
+                 ========================= -->
+
+            <form
+                    th:action="@{/logout}"
+                    method="post"
+                    style="display: inline;">
+
+                <!-- CSRF TOKEN -->
+
+                <input
+                        type="hidden"
+                        th:name="${_csrf.parameterName}"
+                        th:value="${_csrf.token}">
+
+
+                <button
+                        type="submit"
+                        class="btn btn-outline-light logout-button">
+
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+
+                </button>
+
+            </form>
 
         </div>
+
     </div>
+
 </nav>
 
 
-<!-- ================= HERO SECTION ================= -->
 
-<section class="hero text-center">
+<!-- =========================
+     HERO SECTION
+     ========================= -->
+
+<section class="hero">
 
     <div class="container">
 
-        <i class="bi bi-journal-bookmark-fill"
-           style="font-size: 4rem;">
-        </i>
+        <div class="hero-icon">
 
-        <h1 class="mt-3">
+            <i class="bi bi-journal-bookmark"></i>
+
+        </div>
+
+
+        <h1>
             Academic Research Repository
         </h1>
 
+
         <p>
+
             Discover, store and manage academic research papers
             in one secure and centralized platform.
+
         </p>
 
-        <div class="mt-4">
 
-            <a href="/search" class="btn btn-light btn-lg">
+        <div class="hero-buttons">
+
+            <a
+                    href="/search"
+                    class="btn btn-light hero-button">
+
                 <i class="bi bi-search"></i>
+
                 Search Research
+
             </a>
 
-            <a href="/upload" class="btn btn-outline-light btn-lg">
+
+            <a
+                    href="/upload"
+                    class="btn btn-outline-light hero-button">
+
                 <i class="bi bi-cloud-upload"></i>
+
                 Upload Paper
+
             </a>
 
         </div>
@@ -210,30 +355,36 @@
 </section>
 
 
-<!-- ================= STATISTICS ================= -->
 
-<section class="stats">
+<!-- =========================
+     STATISTICS
+     ========================= -->
+
+<section class="statistics">
 
     <div class="container">
 
         <div class="row g-4">
 
+
+            <!-- RESEARCHERS -->
+
             <div class="col-md-4">
 
-                <div class="card stat-card shadow text-center">
+                <div class="stat-card">
 
-                    <div class="card-body">
+                    <div class="stat-icon">
 
-                        <i class="bi bi-people-fill feature-icon"></i>
+                        <i class="bi bi-people-fill"></i>
 
-                        <div class="stat-number">
-                            120
-                        </div>
+                    </div>
 
-                        <p class="text-muted mb-0">
-                            Researchers
-                        </p>
+                    <div class="stat-number">
+                        120
+                    </div>
 
+                    <div class="stat-label">
+                        Researchers
                     </div>
 
                 </div>
@@ -241,22 +392,24 @@
             </div>
 
 
+            <!-- RESEARCH PAPERS -->
+
             <div class="col-md-4">
 
-                <div class="card stat-card shadow text-center">
+                <div class="stat-card">
 
-                    <div class="card-body">
+                    <div class="stat-icon">
 
-                        <i class="bi bi-file-earmark-text-fill feature-icon"></i>
+                        <i class="bi bi-file-earmark-text-fill"></i>
 
-                        <div class="stat-number">
-                            2,500
-                        </div>
+                    </div>
 
-                        <p class="text-muted mb-0">
-                            Research Papers
-                        </p>
+                    <div class="stat-number">
+                        2,500
+                    </div>
 
+                    <div class="stat-label">
+                        Research Papers
                     </div>
 
                 </div>
@@ -264,27 +417,30 @@
             </div>
 
 
+            <!-- CATEGORIES -->
+
             <div class="col-md-4">
 
-                <div class="card stat-card shadow text-center">
+                <div class="stat-card">
 
-                    <div class="card-body">
+                    <div class="stat-icon">
 
-                        <i class="bi bi-folder-fill feature-icon"></i>
+                        <i class="bi bi-folder-fill"></i>
 
-                        <div class="stat-number">
-                            35
-                        </div>
+                    </div>
 
-                        <p class="text-muted mb-0">
-                            Research Categories
-                        </p>
+                    <div class="stat-number">
+                        35
+                    </div>
 
+                    <div class="stat-label">
+                        Research Categories
                     </div>
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -293,108 +449,111 @@
 </section>
 
 
-<!-- ================= FEATURES ================= -->
 
-<section class="container mt-5 pt-5">
+<!-- =========================
+     FEATURES
+     ========================= -->
 
-    <div class="text-center mb-5">
+<section class="features">
 
-        <h2 class="fw-bold">
-            Everything You Need for Academic Research
+    <div class="container">
+
+        <h2 class="section-title">
+
+            UniRepo Features
+
         </h2>
 
-        <p class="text-muted">
-            UniRepo makes managing and discovering research simple.
-        </p>
 
-    </div>
+        <div class="row g-4">
 
 
-    <div class="row g-4">
+            <!-- SEARCH -->
 
-        <!-- Search -->
-        <div class="col-md-4">
+            <div class="col-md-4">
 
-            <div class="card feature-card shadow-sm text-center">
+                <div class="feature-card">
 
-                <div class="card-body">
+                    <div class="feature-icon">
 
-                    <i class="bi bi-search feature-icon"></i>
+                        <i class="bi bi-search"></i>
+
+                    </div>
 
                     <h4>
                         Search Research
                     </h4>
 
-                    <p class="text-muted">
-                        Quickly find academic papers using
-                        keywords, authors and research categories.
-                    </p>
+                    <p>
 
-                    <a href="/search" class="btn btn-primary">
-                        Search Papers
-                    </a>
+                        Quickly find academic research
+                        papers using keywords, authors
+                        and categories.
+
+                    </p>
 
                 </div>
 
             </div>
 
-        </div>
 
+            <!-- STORAGE -->
 
-        <!-- Upload -->
-        <div class="col-md-4">
+            <div class="col-md-4">
 
-            <div class="card feature-card shadow-sm text-center">
+                <div class="feature-card">
 
-                <div class="card-body">
+                    <div class="feature-icon">
 
-                    <i class="bi bi-cloud-arrow-up-fill feature-icon"></i>
+                        <i class="bi bi-database"></i>
+
+                    </div>
 
                     <h4>
-                        Upload Papers
+                        Central Repository
                     </h4>
 
-                    <p class="text-muted">
-                        Upload and securely store academic
-                        research papers in the repository.
-                    </p>
+                    <p>
 
-                    <a href="/upload" class="btn btn-primary">
-                        Upload Paper
-                    </a>
+                        Store and organise academic
+                        research papers in one central
+                        database.
+
+                    </p>
 
                 </div>
 
             </div>
 
-        </div>
 
+            <!-- PDF -->
 
-        <!-- Reports -->
-        <div class="col-md-4">
+            <div class="col-md-4">
 
-            <div class="card feature-card shadow-sm text-center">
+                <div class="feature-card">
 
-                <div class="card-body">
+                    <div class="feature-icon">
 
-                    <i class="bi bi-graph-up-arrow feature-icon"></i>
+                        <i class="bi bi-file-earmark-pdf"></i>
+
+                    </div>
 
                     <h4>
-                        Research Reports
+                        View & Download
                     </h4>
 
-                    <p class="text-muted">
-                        View useful statistics and reports
-                        about research stored in UniRepo.
-                    </p>
+                    <p>
 
-                    <a href="/reports" class="btn btn-primary">
-                        View Reports
-                    </a>
+                        View research papers directly
+                        in the browser or download
+                        them for later use.
+
+                    </p>
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -403,59 +562,31 @@
 </section>
 
 
-<!-- ================= CALL TO ACTION ================= -->
 
-<section class="container mt-5">
-
-    <div class="bg-primary text-white rounded-4 p-5 text-center">
-
-        <h2 class="fw-bold">
-            Start Exploring Academic Research
-        </h2>
-
-        <p class="mb-4">
-            Find valuable research and contribute to the academic community.
-        </p>
-
-        <a href="/search" class="btn btn-light btn-lg">
-            Explore Research
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+     ========================= -->
 
 <footer>
 
-    <div class="container text-center">
+    <p class="mb-0">
 
-        <h5>
-            <i class="bi bi-mortarboard-fill"></i>
-            UniRepo
-        </h5>
+        © 2026 UniRepo -
+        Academic Research Repository
 
-        <p class="mb-2">
-            Academic Research Repository
-        </p>
-
-        <hr>
-
-        <p class="mb-0 text-white-50">
-            © 2026 UniRepo. All rights reserved.
-        </p>
-
-    </div>
+    </p>
 
 </footer>
 
 
-<!-- Bootstrap JavaScript -->
+
+<!-- BOOTSTRAP JAVASCRIPT -->
+
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
+
 </body>
+
 </html>

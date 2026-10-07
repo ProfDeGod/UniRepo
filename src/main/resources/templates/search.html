@@ -9,12 +9,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <!-- Bootstrap -->
+
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet">
 
+
     <!-- Bootstrap Icons -->
+
     <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -27,11 +31,16 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Navbar */
+
+        /* =========================
+           NAVBAR
+           ========================= */
+
         .navbar {
             background: linear-gradient(90deg, #0d47a1, #1976d2);
             padding: 15px 40px;
         }
+
 
         .navbar-brand {
             color: white !important;
@@ -39,28 +48,35 @@
             font-weight: bold;
         }
 
+
         .navbar-nav .nav-link {
             color: white !important;
             margin-left: 20px;
             font-weight: 500;
         }
 
+
         .navbar-nav .nav-link:hover {
             opacity: 0.8;
         }
 
 
-        /* Page header */
+        /* =========================
+           PAGE HEADER
+           ========================= */
+
         .page-header {
             background: linear-gradient(135deg, #0d47a1, #1976d2);
             color: white;
             padding: 45px 0;
         }
 
+
         .page-header h1 {
             font-size: 36px;
             font-weight: bold;
         }
+
 
         .page-header p {
             font-size: 17px;
@@ -68,10 +84,14 @@
         }
 
 
-        /* Search box */
+        /* =========================
+           SEARCH BOX
+           ========================= */
+
         .search-container {
             margin-top: -30px;
         }
+
 
         .search-card {
             background: white;
@@ -80,23 +100,27 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
         }
 
+
         .form-label {
             font-weight: 600;
         }
 
 
-        /* Search button */
         .search-button {
             height: 48px;
             font-weight: 600;
         }
 
 
-        /* Results */
+        /* =========================
+           RESULTS
+           ========================= */
+
         .results-title {
             font-weight: bold;
             color: #212529;
         }
+
 
         .paper-card {
             background: white;
@@ -107,10 +131,12 @@
             transition: 0.2s;
         }
 
+
         .paper-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
         }
+
 
         .paper-title {
             color: #0d47a1;
@@ -118,14 +144,17 @@
             font-weight: bold;
         }
 
+
         .paper-author {
             color: #555;
         }
+
 
         .paper-abstract {
             color: #555;
             line-height: 1.6;
         }
+
 
         .category-badge {
             background-color: #1976d2;
@@ -133,7 +162,26 @@
         }
 
 
-        /* No results */
+        /* =========================
+           FILE SECTION
+           ========================= */
+
+        .file-section {
+            border-top: 1px solid #eeeeee;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+
+        .download-button {
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           NO RESULTS
+           ========================= */
+
         .no-results {
             background: white;
             border-radius: 12px;
@@ -142,13 +190,17 @@
             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
         }
 
+
         .no-results i {
             font-size: 45px;
             color: #999;
         }
 
 
-        /* Footer */
+        /* =========================
+           FOOTER
+           ========================= */
+
         footer {
             margin-top: 60px;
             background-color: #0d47a1;
@@ -165,39 +217,66 @@
 <body>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =========================
+     NAVIGATION BAR
+     ========================= -->
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar">
 
     <div class="container-fluid">
 
+
+        <!-- LOGO -->
+
         <a class="navbar-brand" href="/">
+
             <i class="bi bi-journal-bookmark-fill"></i>
+
             UniRepo
+
         </a>
 
 
+        <!-- NAVIGATION -->
+
         <div class="navbar-nav ms-auto">
 
+
             <a class="nav-link" href="/">
+
                 <i class="bi bi-house"></i>
+
                 Home
+
             </a>
+
 
             <a class="nav-link active" href="/search">
+
                 <i class="bi bi-search"></i>
+
                 Search Papers
+
             </a>
+
 
             <a class="nav-link" href="/upload">
+
                 <i class="bi bi-cloud-upload"></i>
+
                 Upload Paper
+
             </a>
 
+
             <a class="nav-link" href="/reports">
+
                 <i class="bi bi-bar-chart"></i>
+
                 Reports
+
             </a>
+
 
         </div>
 
@@ -207,20 +286,30 @@
 
 
 
-<!-- ================= PAGE HEADER ================= -->
+<!-- =========================
+     PAGE HEADER
+     ========================= -->
 
 <section class="page-header">
 
     <div class="container">
 
+
         <h1>
+
             <i class="bi bi-search"></i>
+
             Search Research Papers
+
         </h1>
 
+
         <p>
+
             Find academic research papers by title, author, keyword or category.
+
         </p>
+
 
     </div>
 
@@ -228,24 +317,33 @@
 
 
 
-<!-- ================= SEARCH FORM ================= -->
+<!-- =========================
+     SEARCH FORM
+     ========================= -->
 
 <div class="container search-container">
 
     <div class="search-card">
 
+
         <form action="/search" method="get">
+
 
             <div class="row g-3 align-items-end">
 
 
-                <!-- Keyword -->
+                <!-- KEYWORD -->
 
                 <div class="col-md-7">
 
-                    <label for="keyword" class="form-label">
+                    <label
+                            for="keyword"
+                            class="form-label">
+
                         Keyword
+
                     </label>
+
 
                     <input
                             type="text"
@@ -258,77 +356,121 @@
                 </div>
 
 
-                <!-- Category -->
+
+                <!-- CATEGORY -->
 
                 <div class="col-md-3">
 
-                    <label for="category" class="form-label">
+                    <label
+                            for="category"
+                            class="form-label">
+
                         Category
+
                     </label>
+
 
                     <select
                             id="category"
                             name="category"
                             class="form-select">
 
-                        <option value=""
+
+                        <option
+                                value=""
                                 th:selected="${category == null or category == ''}">
+
                             All Categories
+
                         </option>
 
-                        <option value="Computer Science"
+
+                        <option
+                                value="Computer Science"
                                 th:selected="${category == 'Computer Science'}">
+
                             Computer Science
+
                         </option>
 
-                        <option value="Information Technology"
+
+                        <option
+                                value="Information Technology"
                                 th:selected="${category == 'Information Technology'}">
+
                             Information Technology
+
                         </option>
 
-                        <option value="Mathematics"
+
+                        <option
+                                value="Mathematics"
                                 th:selected="${category == 'Mathematics'}">
+
                             Mathematics
+
                         </option>
 
-                        <option value="Engineering"
+
+                        <option
+                                value="Engineering"
                                 th:selected="${category == 'Engineering'}">
+
                             Engineering
+
                         </option>
 
-                        <option value="Business"
+
+                        <option
+                                value="Business"
                                 th:selected="${category == 'Business'}">
+
                             Business
+
                         </option>
 
-                        <option value="Education"
+
+                        <option
+                                value="Education"
                                 th:selected="${category == 'Education'}">
+
                             Education
+
                         </option>
+
 
                     </select>
 
                 </div>
 
 
-                <!-- Search button -->
+
+                <!-- SEARCH BUTTON -->
 
                 <div class="col-md-2">
+
 
                     <button
                             type="submit"
                             class="btn btn-primary search-button w-100">
 
+
                         <i class="bi bi-search"></i>
+
                         Search
+
 
                     </button>
 
+
                 </div>
+
 
             </div>
 
+
         </form>
+
 
     </div>
 
@@ -336,98 +478,162 @@
 
 
 
-<!-- ================= SEARCH INFORMATION ================= -->
+<!-- =========================
+     RESULTS
+     ========================= -->
 
 <div class="container mt-5">
 
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <!-- RESULTS HEADER -->
+
+    <div
+            class="d-flex justify-content-between align-items-center mb-4">
+
 
         <h2 class="results-title">
+
             Research Papers
+
         </h2>
+
 
         <span
                 th:if="${papers != null}"
                 class="text-muted">
 
-            <span th:text="${#lists.size(papers)}">0</span>
+
+            <span th:text="${#lists.size(papers)}">
+
+                0
+
+            </span>
+
+
             paper(s) found
 
+
         </span>
+
 
     </div>
 
 
 
-    <!-- Search filters currently being used -->
+    <!-- =========================
+         CURRENT SEARCH
+         ========================= -->
 
     <div
             th:if="${(keyword != null and !#strings.isEmpty(keyword))
                     or (category != null and !#strings.isEmpty(category))}"
             class="alert alert-info">
 
+
         <i class="bi bi-funnel"></i>
 
-        <strong>Current search:</strong>
+
+        <strong>
+
+            Current search:
+
+        </strong>
+
+
 
         <span
                 th:if="${keyword != null and !#strings.isEmpty(keyword)}">
 
+
             Keyword:
-            <strong th:text="${keyword}"></strong>
+
+
+            <strong th:text="${keyword}">
+
+                keyword
+
+            </strong>
+
 
         </span>
+
+
 
         <span
                 th:if="${category != null and !#strings.isEmpty(category)}">
 
-            &nbsp;&nbsp;|&nbsp;&nbsp;
+
+            &nbsp;&nbsp; | &nbsp;&nbsp;
+
 
             Category:
-            <strong th:text="${category}"></strong>
+
+
+            <strong th:text="${category}">
+
+                category
+
+            </strong>
+
 
         </span>
+
 
     </div>
 
 
 
-    <!-- ================= NO RESULTS ================= -->
+    <!-- =========================
+         NO RESULTS
+         ========================= -->
 
     <div
             th:if="${papers == null or #lists.isEmpty(papers)}"
             class="no-results">
 
+
         <i class="bi bi-file-earmark-x"></i>
 
+
         <h3 class="mt-3">
+
             No Research Papers Found
+
         </h3>
 
+
         <p class="text-muted">
+
             Try using a different keyword or category.
+
         </p>
+
 
     </div>
 
 
 
-    <!-- ================= RESEARCH PAPER RESULTS ================= -->
+    <!-- =========================
+         PAPER RESULTS
+         ========================= -->
 
     <div
             th:if="${papers != null and !#lists.isEmpty(papers)}"
             th:each="paper : ${papers}"
             class="paper-card">
 
+
         <div class="card-body p-4">
 
 
-            <!-- Title -->
+            <!-- TITLE + CATEGORY -->
 
-            <div class="d-flex justify-content-between align-items-start">
+            <div
+                    class="d-flex justify-content-between align-items-start">
+
 
                 <div>
+
 
                     <h3
                             class="paper-title"
@@ -437,10 +643,9 @@
 
                     </h3>
 
+
                 </div>
 
-
-                <!-- Category -->
 
                 <span
                         class="badge category-badge"
@@ -450,68 +655,163 @@
 
                 </span>
 
+
             </div>
 
 
 
-            <!-- Author and year -->
+            <!-- AUTHOR + YEAR -->
 
             <p class="paper-author mt-2">
 
+
                 <i class="bi bi-person"></i>
 
-                <strong>Author:</strong>
+
+                <strong>
+
+                    Author:
+
+                </strong>
+
 
                 <span th:text="${paper.author}">
+
                     Author Name
+
                 </span>
+
 
 
                 &nbsp;&nbsp; | &nbsp;&nbsp;
 
 
+
                 <i class="bi bi-calendar"></i>
 
-                <strong>Year:</strong>
+
+                <strong>
+
+                    Year:
+
+                </strong>
+
 
                 <span th:text="${paper.year}">
+
                     2026
+
                 </span>
+
 
             </p>
 
 
 
-            <!-- Abstract -->
+            <!-- ABSTRACT -->
 
             <p class="paper-abstract mt-3">
 
-                <strong>Abstract:</strong>
+
+                <strong>
+
+                    Abstract:
+
+                </strong>
+
 
                 <span th:text="${paper.abstractText}">
+
                     Research paper abstract will appear here.
+
                 </span>
+
 
             </p>
 
 
 
-            <!-- File -->
+            <!-- =========================
+                 FILE + DOWNLOAD BUTTON
+                 ========================= -->
 
-            <div class="mt-3">
+            <div
+                    class="file-section d-flex justify-content-between align-items-center">
 
-                <i class="bi bi-file-earmark-pdf text-danger"></i>
 
-                <strong>File:</strong>
+                <!-- FILE NAME -->
 
-                <span th:text="${paper.fileName}">
-                    research-paper.pdf
-                </span>
+                <div>
+
+
+                    <i
+                            class="bi bi-file-earmark-pdf text-danger"
+                            style="font-size: 20px;">
+                    </i>
+
+
+                    <strong>
+
+                        File:
+
+                    </strong>
+
+
+                    <span th:text="${paper.fileName}">
+
+                        research-paper.pdf
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- DOWNLOAD BUTTON -->
+
+                <div>
+
+
+                    <div class="d-flex gap-2">
+
+                        <!-- VIEW PDF -->
+
+                        <a
+                                th:href="@{/view/{id}(id=${paper.id})}"
+                                class="btn btn-success"
+                                target="_blank">
+
+                            <i class="bi bi-eye"></i>
+
+                            View PDF
+
+                        </a>
+
+
+                        <!-- DOWNLOAD PDF -->
+
+                        <a
+                                th:href="@{/download/{id}(id=${paper.id})}"
+                                class="btn btn-primary download-button">
+
+                            <i class="bi bi-download"></i>
+
+                            Download PDF
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
 
             </div>
 
 
         </div>
+
 
     </div>
 
@@ -520,13 +820,20 @@
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+     FOOTER
+     ========================= -->
 
 <footer>
 
+
     <p class="mb-0">
-        © 2026 UniRepo - Academic Research Repository
+
+        © 2026 UniRepo -
+        Academic Research Repository
+
     </p>
+
 
 </footer>
 

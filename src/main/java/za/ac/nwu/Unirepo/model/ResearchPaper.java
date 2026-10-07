@@ -25,6 +25,7 @@ public class ResearchPaper {
     @Column(length = 5000)
     private String abstractText;
 
+    @Column(name = "publication_year")
     private int year;
 
     private String fileName;
